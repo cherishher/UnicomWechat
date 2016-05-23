@@ -6,7 +6,7 @@ DB_HOST = '127.0.0.1'
 DB_USER = 'root'
 DB_PWD = 'qh129512'
 # DB_NAME = 'herald_webservice'
-DB_NAME = 'Unicom'
+DB_NAME = 'unicom_user'
 
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
