@@ -61,7 +61,7 @@ class Message(object):
         elif content==u'调戏' :
             return 'tuling'
         elif content == u'课表' :
-            return 'class'
+            return 'schedule'
 
     @property
     def openid(self):

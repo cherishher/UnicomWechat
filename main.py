@@ -30,7 +30,7 @@ class Application(tornado.web.Application):
     def __init__(self):
         handlers = [
             (r'/wechata/',WechatHandler),
-            (r'/wechata/bind/([\S]+)',BindHandler)
+            (r'/wechata/register/([\S]+)',BindHandler)
             ]
         settings = dict(
             cookie_secret="7CA71A57B571B5AEAC5E64C6042415DE",
@@ -61,7 +61,7 @@ class WechatHandler(tornado.web.RequestHandler):
             'nothing':self.nothing,
             'unicomCard':self.unicomcard,
             'tuling':self.tuling,
-            'classTable':self.classtable
+            'schedule':self.classtable
         }
     def on_finish(self):
         self.db.close()
