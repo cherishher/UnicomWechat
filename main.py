@@ -30,7 +30,7 @@ class Application(tornado.web.Application):
     def __init__(self):
         handlers = [
             (r'/wechata/',WechatHandler),
-            (r'/wechata/bind/([\S]+)',BindHandler)
+            (r'/wechata/register/([\S]+)',BindHandler)
             ]
         settings = dict(
             cookie_secret="7CA71A57B571B5AEAC5E64C6042415DE",
@@ -61,7 +61,7 @@ class WechatHandler(tornado.web.RequestHandler):
             'nothing':self.nothing,
             'unicomCard':self.unicomcard,
             'tuling':self.tuling,
-            'classTable':self.classtable
+            'schedule':self.classtable
         }
     def on_finish(self):
         self.db.close()
@@ -96,7 +96,7 @@ class WechatHandler(tornado.web.RequestHandler):
                         try:
                             self.unitsmap[self.wx.event_key]()
                         except KeyError:
-                            pass
+                            print 'key error'
                         self.finish()
                 elif self.wx.msg_type == 'text':
 
@@ -132,12 +132,14 @@ class WechatHandler(tornado.web.RequestHandler):
     def classtable(self):
         try:
             user = self.db.query(Cardnum).filter(Cardnum.openid == self.wx.openid).one()
+	    print user
             msg = self.get_class(user.cardnum)
             self.write(self.wx.response_text_msg(msg))
         except NoResultFound:
             msg = u'<a href="%s/register/%s">您尚未进行绑定，点我绑定哦！</a>'%(LOCAL,self.wx.openid)
             self.write(self.wx.response_text_msg(msg))
-
+	except Exception,e:
+	    self.write(self.wx.response_text_msg(str(e)))
     # def openid_to_cardnum(self,openid):
     #     user = self.db.query(Cardnum).filter(Cardnum.openid == openid).one()
     #     return user.cardnum

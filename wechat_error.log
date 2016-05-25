@@ -1,0 +1,9 @@
+20160523 20:11:11 in [wechat]
+<type 'exceptions.KeyError'>None
+
+20160523 20:11:21 in [wechat]
+<type 'exceptions.KeyError'>'class'
+
+20160525 22:09:41 in [wechat]
+<class 'sqlalchemy.exc.OperationalError'>(_mysql_exceptions.OperationalError) (1049, "Unknown database 'unicom'")
+
