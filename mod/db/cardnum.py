@@ -12,6 +12,7 @@ class Cardnum(Base):
 	__tablename__ = 'cardnum'
 	key = Column(Integer,primary_key=True)
 	cardnum = Column(String(1024),nullable=False)
+	openid = Column(String(1024),nullable=False)
 
 if __name__ == '__main__':
 	Base.metadata.create_all(engine)
