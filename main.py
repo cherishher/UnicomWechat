@@ -119,7 +119,7 @@ class WechatHandler(tornado.web.RequestHandler):
         msg = u' '
         # self.write(self.wx.response_text_msg(msg))
     def unicomcard(self):
-        msg =  u'<a href="%s/allweixin">戳我快速办理手机卡！</a>' %CARD_URL
+        msg =  u'<a href="%s/allweixin">戳我快速领取通信卡！</a>' %CARD_URL
         self.write(self.wx.response_text_msg(msg))
     def tuling_message(self):
         msg = u'直接发送消息可进行调戏呦~'
@@ -127,10 +127,11 @@ class WechatHandler(tornado.web.RequestHandler):
 
     def tuling(self):
         try:
-            msg = self.tuling_response(self.wx.content,self.wx.openid)
+            msg = u''
+            msg = self.tuling_response(self.wx.raw_content,self.wx.openid)
             self.write(self.wx.response_text_msg(msg))
         except Exception,e:
-            msg = u'哦no！人家被玩坏了等等再调戏人家好不好啊~'
+            msg = u'哦no！人家被玩坏了,等会再调戏人家好不好啊~'
             self.write(self.wx.response_text_msg(msg))
 
     def classtable(self):
@@ -144,7 +145,7 @@ class WechatHandler(tornado.web.RequestHandler):
                 msg += result[i][1]+"\n"
                 msg += result[i][2]+"\n"
                 msg += '\n'
-            self.write(self.wx.response_text_msg(msg.decode('unicode_escape')))
+            self.write(self.wx.response_text_msg(msg))
         except NoResultFound:
             msg = u'<a href="%s/register/%s">您尚未进行绑定，点我绑定哦！</a>'%(LOCAL,self.wx.openid)
             self.write(self.wx.response_text_msg(msg))
@@ -157,7 +158,7 @@ class WechatHandler(tornado.web.RequestHandler):
     def tuling_response(self,info,openid):
         client = HTTPClient()
         data = {
-            'info':info,
+            'info':info.encode('urf-8'),
             'cardnum':openid
         }
         request = HTTPRequest(
@@ -167,7 +168,8 @@ class WechatHandler(tornado.web.RequestHandler):
         )
         response = client.fetch(request)
         content = json.loads(response.body)
-        return content
+        message = json.loads(content['retinfo'])['text']
+        return message
 
     def get_class(self,cardnum):
         # cardnum = self.openid_to_cardnum(openid)
