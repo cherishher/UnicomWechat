@@ -60,7 +60,7 @@ class WechatHandler(tornado.web.RequestHandler):
         return {
             'nothing':self.nothing,
             'unicomCard':self.unicomcard,
-            'tuling':self.tuling,
+            'tuling':self.tuling_message,
             'schedule':self.classtable
         }
     def on_finish(self):
@@ -99,7 +99,7 @@ class WechatHandler(tornado.web.RequestHandler):
                             print 'key error'
                         self.finish()
                 elif self.wx.msg_type == 'text':
-
+                    self.tuling()
                     self.finish()
 
                 else:
@@ -107,7 +107,7 @@ class WechatHandler(tornado.web.RequestHandler):
                     self.finish()
             except:
                 with open('wechat_error.log','a+') as f:
-                    f.write(strftime('%Y%m%d %H:%M:%S in [wechat]', localtime(time()))+'\n'+str(sys.exc_info()[0])+str(sys.exc_info()[1])+'\n\n')
+                    f.write(time.strftime('%Y%m%d %H:%M:%S in [wechat]', time.localtime(time()))+'\n'+str(sys.exc_info()[0])+str(sys.exc_info()[1])+'\n\n')
                 self.write(self.wx.response_text_msg(u'出了点问题T_T,稍后再试吧~'))
                 self.finish()
         else:
@@ -121,14 +121,18 @@ class WechatHandler(tornado.web.RequestHandler):
     def unicomcard(self):
         msg =  u'<a href="%s/allweixin">戳我快速办理手机卡！</a>' %CARD_URL
         self.write(self.wx.response_text_msg(msg))
+    def tuling_message(self):
+        msg = u'直接发送消息可进行调戏呦~'
+        self.write(self.wx.response_text_msg(msg))
+
     def tuling(self):
         try:
-            user = self.db.query(Cardnum).filter(Cardnum.openid == self.wx.openid).one()
-            msg = u'此功能还未完善，到时候再来试试吧！'
+            msg = self.tuling_response(self.wx.content,self.wx.openid)
             self.write(self.wx.response_text_msg(msg))
-        except NoResultFound:
-            msg = u'<a href="%s/register/%s">您尚未进行绑定，点我绑定哦！</a>'%(LOCAL,self.wx.openid)
+        except Exception,e:
+            msg = u'哦no！人家被玩坏了等等再调戏人家好不好啊~'
             self.write(self.wx.response_text_msg(msg))
+
     def classtable(self):
         try:
             user = self.db.query(Cardnum).filter(Cardnum.openid == self.wx.openid).one()
@@ -136,9 +140,9 @@ class WechatHandler(tornado.web.RequestHandler):
             msg = u""
             result = self.get_class(user.cardnum)
             for i in range(len(result)):
-                msg += result[i][0]
-                msg += result[i][1]
-                msg += result[i][2]
+                msg += result[i][0]+"\n"
+                msg += result[i][1]+"\n"
+                msg += result[i][2]+"\n"
                 msg += '\n'
             self.write(self.wx.response_text_msg(msg.decode('unicode_escape')))
         except NoResultFound:
@@ -163,7 +167,7 @@ class WechatHandler(tornado.web.RequestHandler):
         )
         response = client.fetch(request)
         content = json.loads(response.body)
-        return content[1]
+        return content
 
     def get_class(self,cardnum):
         # cardnum = self.openid_to_cardnum(openid)
