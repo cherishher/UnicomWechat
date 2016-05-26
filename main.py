@@ -132,14 +132,20 @@ class WechatHandler(tornado.web.RequestHandler):
     def classtable(self):
         try:
             user = self.db.query(Cardnum).filter(Cardnum.openid == self.wx.openid).one()
-	    print user
-            msg = self.get_class(user.cardnum)
+            print user
+            msg = u""
+            result = self.get_class(user.cardnum)
+            for i in range(len(result)):
+                msg += result[i][0]
+                msg += result[i][1]
+                msg += result[i][2]
+                msg += '\n'
             self.write(self.wx.response_text_msg(msg.decode('unicode_escape')))
         except NoResultFound:
             msg = u'<a href="%s/register/%s">您尚未进行绑定，点我绑定哦！</a>'%(LOCAL,self.wx.openid)
             self.write(self.wx.response_text_msg(msg))
-	except Exception,e:
-	    self.write(self.wx.response_text_msg(str(e)))
+        except Exception,e:
+            self.write(self.wx.response_text_msg(str(e)))
     # def openid_to_cardnum(self,openid):
     #     user = self.db.query(Cardnum).filter(Cardnum.openid == openid).one()
     #     return user.cardnum
@@ -173,9 +179,9 @@ class WechatHandler(tornado.web.RequestHandler):
         )
         response = client.fetch(request)
         content = json.loads(response.body)
-	week = str(time.strftime("%w"))
-	todayclass = content['content'][week]
-        return str(todayclass)
+        week = str(time.strftime("%w"))
+        todayclass = content['content'][week]
+        return todayclass
     # def change_pwd(self):
     #     try:
     #         teacher = self.db.query(Teacher).filter(Teacher.openid == self.wx.openid).one()
