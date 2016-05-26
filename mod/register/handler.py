@@ -33,20 +33,23 @@ class BindHandler(tornado.web.RequestHandler):
     @tornado.gen.engine
     def post(self,openid):
 		flag = True
-		cardnum = self.get_argument('cardnum',default=None)
-		user = self.db.Query(Cardnum).filter(Cardnum.cardnum == cardnum).one()
-		if not openid:
-			self.write("accesss failed")
-			flag = False
-		elif not cardnum:
-			self.write("请填入完整信息哦！")
-			flag = False
-		elif user:
-			self.write("该用户已经绑定咯")
-			flag = False
-		if flag:
-			new_cardnum = Cardnum(cardnum = cardnum,openid = openid)
-			self.db.add(new_cardnum)
-			self.db.commit()
+		cardnum = self.get_argument('number',default=None)
+		try:
+			user = self.db.query(Cardnum).filter(Cardnum.cardnum == cardnum).one()
+			if not openid:
+				self.write("accesss failed")
+				flag = False
+			elif not cardnum:
+				self.write("请填入完整信息哦！")
+				flag = False
+			user = self.db.query(Cardnum).filter(Cardnum.cardnum == cardnum).one()
+			if user:
+				self.write("该用户已经绑定咯")
+				flag = False
+		except Exception,e:
+			if flag:
+				new_cardnum = Cardnum(cardnum = cardnum,openid = openid)
+				self.db.add(new_cardnum)
+				self.db.commit()
 			self.write('绑定成功！')
 		self.finish()

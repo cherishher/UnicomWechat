@@ -17,8 +17,8 @@ import tornado.gen
 import os, sys
 import check
 import random
+import time
 import json,urllib
-from time import localtime, strftime, time
 
 
 
@@ -124,7 +124,7 @@ class WechatHandler(tornado.web.RequestHandler):
     def tuling(self):
         try:
             user = self.db.query(Cardnum).filter(Cardnum.openid == self.wx.openid).one()
-            msg = tuling_url(self.wx.content,self.wx.openid)
+            msg = u'此功能还未完善，到时候再来试试吧！'
             self.write(self.wx.response_text_msg(msg))
         except NoResultFound:
             msg = u'<a href="%s/register/%s">您尚未进行绑定，点我绑定哦！</a>'%(LOCAL,self.wx.openid)
@@ -134,7 +134,7 @@ class WechatHandler(tornado.web.RequestHandler):
             user = self.db.query(Cardnum).filter(Cardnum.openid == self.wx.openid).one()
 	    print user
             msg = self.get_class(user.cardnum)
-            self.write(self.wx.response_text_msg(msg))
+            self.write(self.wx.response_text_msg(msg.decode('unicode_escape')))
         except NoResultFound:
             msg = u'<a href="%s/register/%s">您尚未进行绑定，点我绑定哦！</a>'%(LOCAL,self.wx.openid)
             self.write(self.wx.response_text_msg(msg))
@@ -157,7 +157,7 @@ class WechatHandler(tornado.web.RequestHandler):
         )
         response = client.fetch(request)
         content = json.loads(response.body)
-        return content
+        return content[1]
 
     def get_class(self,cardnum):
         # cardnum = self.openid_to_cardnum(openid)
@@ -173,7 +173,9 @@ class WechatHandler(tornado.web.RequestHandler):
         )
         response = client.fetch(request)
         content = json.loads(response.body)
-        return content
+	week = str(time.strftime("%w"))
+	todayclass = content['content'][week]
+        return str(todayclass)
     # def change_pwd(self):
     #     try:
     #         teacher = self.db.query(Teacher).filter(Teacher.openid == self.wx.openid).one()

@@ -7,3 +7,30 @@
 20160525 22:09:41 in [wechat]
 <class 'sqlalchemy.exc.OperationalError'>(_mysql_exceptions.OperationalError) (1049, "Unknown database 'unicom'")
 
+20160526 00:09:21 in [wechat]
+<type 'exceptions.TypeError'>argument of type 'NoneType' is not iterable
+
+20160526 00:09:23 in [wechat]
+<type 'exceptions.TypeError'>argument of type 'NoneType' is not iterable
+
+20160526 00:12:38 in [wechat]
+<type 'exceptions.TypeError'>argument of type 'NoneType' is not iterable
+
+20160526 00:23:47 in [wechat]
+<type 'exceptions.TypeError'>argument of type 'NoneType' is not iterable
+
+20160526 00:23:53 in [wechat]
+<type 'exceptions.TypeError'>argument of type 'NoneType' is not iterable
+
+20160526 00:23:55 in [wechat]
+<type 'exceptions.TypeError'>argument of type 'NoneType' is not iterable
+
+20160526 00:24:05 in [wechat]
+<type 'exceptions.TypeError'>argument of type 'NoneType' is not iterable
+
+20160526 17:38:59 in [wechat]
+<type 'exceptions.TypeError'>argument of type 'NoneType' is not iterable
+
+20160526 17:43:33 in [wechat]
+<type 'exceptions.TypeError'>argument of type 'NoneType' is not iterable
+
