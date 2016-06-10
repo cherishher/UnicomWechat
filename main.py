@@ -286,7 +286,7 @@ class WechatHandlera(tornado.web.RequestHandler):
             try:
                 if self.wx.msg_type == 'event' :
                     if self.wx.event =='subscribe':
-                        self.write(self.wx.response_text_msg(ResponseContent))
+                        self.write(self.wx.response_text_msg(ResponseContentnh))
                         self.finish()
                     elif self.wx.event == 'unsubscribe':
                         self.write(self.wx.response_text_msg(u'谢谢您的关注'))
