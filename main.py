@@ -150,7 +150,8 @@ class WechatHandler(tornado.web.RequestHandler):
             msg = u'<a href="%s/register/%s">您尚未进行绑定，点我绑定哦！</a>'%(LOCAL,self.wx.openid)
             self.write(self.wx.response_text_msg(msg))
         except Exception,e:
-            self.write(self.wx.response_text_msg(str(e)))
+            msg = u'没有查到你的课表哎，你今天不会是没有课吧~'
+            self.write(self.wx.response_text_msg(msg))
     # def openid_to_cardnum(self,openid):
     #     user = self.db.query(Cardnum).filter(Cardnum.openid == openid).one()
     #     return user.cardnum

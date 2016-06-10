@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="{{ static_url('css/jquery.mobile-1.4.2.css') }}">
+        <script type="text/javascript" src="{{ static_url('js/jquery.min.js') }}"></script>
+        <script type="text/javascript" src="{{ static_url('js/jquery.mobile-1.4.2.min.js') }}"></script> 
+        <title>绑定账号</title>
+    </head>
+
+    <body>
+        <div data-role="page">
+            <div data-role="header">
+                <h1>账号绑定</h1>
+            </div>
+            <div data-role="content" class="main_content">
+                <div data-role="fieldcontain">
+                    <div data-role="controlgroup" >
+                    <input type="text" id="number" placeholder="一卡通号" value="">
+                    </div>
+                </div>
+                <div data-role="fieldcontain">
+                    <a data-role="button" data-transition="slide" id="bind_button" data-theme="b">绑定</a>
+                </div>
+            </div>
+        </div>
+
+    <script>
+    $(document).ready(function(){
+        $('#bind_button').on('click',function(){
+            $.mobile.loading('show',{theme:"b",text:"正在操作...",textonly:true, textVisible: true});
+            setTimeout(function(){
+                $.ajax({
+                    url:'/wechata/register/{{openid}}',
+                    type:'POST',
+                    data:{
+                        'number':$('#number').val()
+                    },
+                    success:function(e){
+                        $.mobile.loading('hide');
+                        if(e =='success'){
+                            $('.main_content').html('<div style="margin-top:20%"><center>绑定成功</center></div>');
+                        }
+                        else{
+                            alert(e);
+                        }
+                    },
+                    error:function(e){
+                        $.mobile.loading('hide');
+                        alert('绑定失败,请检查网络');
+                    }
+                });
+            },50);
+            });
+        });
+    </script>
+    </body>
+</html>

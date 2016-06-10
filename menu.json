@@ -1,11 +1,11 @@
 {
       "button":[
       {
-           "name":"Hi!",
+           "name":"礼包",
            "sub_button":[
             {
                "type":"click",
-               "name":"办卡",
+               "name":"领卡",
                "key":"unicomCard"
             }
             ]
@@ -29,6 +29,9 @@
             }]
        }]
  }
+//https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN修改菜单接口post
+//https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET获取APPID接口GET
+//https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET
 //http://123.57.221.18/mobile_intro
 //http://123.57.221.18/mobile_login
 //http://123.57.221.18/ranking
