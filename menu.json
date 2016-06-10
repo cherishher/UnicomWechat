@@ -35,7 +35,52 @@
 //http://123.57.221.18/mobile_intro
 //http://123.57.221.18/mobile_login
 //http://123.57.221.18/ranking
-//
+/*
+{
+      "button":[
+      {
+           "name":"新生报到",
+           "sub_button":[
+            {
+               "type":"click",
+               "name":"校园信息卡申领",
+               "key":"unicomCard"
+            }
+            ]
+       },
+       {
+           "name":"约吗?",
+           "sub_button":[
+            {
+               "type":"click",
+               "name":"调戏",
+               "key":"tuling"
+            }]
+       },
+       {
+           "name":"音超联赛",
+           "sub_button":[
+            {
+               "type":"click",
+               "name":"音超报名",
+               "key":"signup"
+            }],
+           "sub_button":[
+            {
+               "type":"click",
+               "name":"音超投票",
+               "key":"vote"
+            }],
+           "sub_button":[
+            {
+               "type":"click",
+               "name":"音超视频上传",
+               "key":"upload"
+            }]
+       }]
+ }
+
+
 //{
 //      "button":[
 //      {
