@@ -19,6 +19,7 @@ import check
 import random
 import time
 import json,urllib
+from mod.schoolbus.handler import SchoolBusHandler
 
 
 
@@ -31,7 +32,8 @@ class Application(tornado.web.Application):
         handlers = [
             (r'/wechata/',WechatHandler),
             (r'/wechata/register/([\S]+)',BindHandler),
-            (r'/wechatanh/',WechatHandlera)
+            (r'/wechatanh/',WechatHandlera),
+            (r'/webchata/schoolbus',SchoolBusHandler)
             ]
         settings = dict(
             cookie_secret="7CA71A57B571B5AEAC5E64C6042415DE",
@@ -62,7 +64,13 @@ class WechatHandler(tornado.web.RequestHandler):
             'nothing':self.nothing,
             'unicomCard':self.unicomcard,
             'tuling':self.tuling_message,
-            'schedule':self.classtable
+            'schedule':self.classtable,
+            'recharge':self.recharge,
+            'query':self.query,
+            'wlan':self.wlan,
+            'freeflow':self.freeflow,
+            'calender':self.calender,
+            'schoolbus':self.schoolbus
         }
     def on_finish(self):
         self.db.close()
@@ -160,7 +168,7 @@ class WechatHandler(tornado.web.RequestHandler):
     def tuling_response(self,info,openid):
         client = HTTPClient()
         data = {
-            'info':info.encode('urf-8'),
+            'info':info.encode('utf-8'),
             'cardnum':openid
         }
         request = HTTPRequest(
@@ -190,6 +198,43 @@ class WechatHandler(tornado.web.RequestHandler):
         week = str(time.strftime("%w"))
         todayclass = content['content'][week]
         return todayclass
+
+    def recharge(self):
+        msg =  u'<a href="%s/allweixin">戳我快速充值！</a>' %dnrecharge_url
+        self.write(self.wx.response_text_msg(msg))
+
+    def query(self):
+        msg =  u'请关注WO江苏微信公众号获取'
+        self.write(self.wx.response_text_msg(msg))
+
+    def wlan(self):
+        msg =  u'<a href="%s/allweixin">wlan服务！</a>' %dnwlan_url
+        self.write(self.wx.response_text_msg(msg))
+
+    def freeflow(self):
+        msg =  u'<a href="%s/allweixin">戳我领取新生专属免费流量！</a>' %dnfreeflow_url
+        self.write(self.wx.response_text_msg(msg))
+
+    def schoolbus(self):
+        msg = self.getschoolbus()
+        self.write(self.wx.response_text_msg(msg))
+
+    def calender(self):
+        msg =  u'<a href="%s/allweixin">戳我查看校历！</a>' %dncalender_url
+        self.write(self.wx.response_text_msg(msg))
+
+    def getschoolbus(self):
+        client = HTTPClient()
+        request = HTTPRequest(
+            url = tuling_url,
+            method = 'GET'
+        )
+        response = client.fetch(request)
+        content = json.loads(response.body)
+        message = json.loads(content['holiday'])
+        return message
+
+
     # def change_pwd(self):
     #     try:
     #         teacher = self.db.query(Teacher).filter(Teacher.openid == self.wx.openid).one()
@@ -260,7 +305,11 @@ class WechatHandlera(tornado.web.RequestHandler):
             'tuling':self.tuling_message,
             'signup':self.signup,
             'vote':self.vote,
-            'upload':self.upload
+            'upload':self.upload,
+            'recharge':self.recharge,
+            'query':self.query,
+            'price':self.price,
+            'freeflow':self.freeflow
         }
     def on_finish(self):
         self.db.close()
@@ -363,6 +412,48 @@ class WechatHandlera(tornado.web.RequestHandler):
         uploadurl = 'http://unicom.maomengtv.com/unicom/yinc/down?from=singlemessage&isappinstalled=0'
         msg =  u'<a href="%s/allweixin">音超视频上传</a>' % uploadurl
         self.write(self.wx.response_text_msg(msg))
+
+    def recharge(self):
+        msg =  u'<a href="%s/allweixin">戳我快速充值！</a>' %nhrecharge_url
+        self.write(self.wx.response_text_msg(msg))
+
+    def query(self):
+        msg =  u'请关注wo江苏微信公众号后查询'
+        self.write(self.wx.response_text_msg(msg))
+
+    def freeflow(self):
+        msg =  u'<a href="%s/allweixin">戳我领取新生专属免费流量！</a>' %nhfreeflow_url
+        self.write(self.wx.response_text_msg(msg))
+
+    def price(self):
+        msg =  u'<a href="%s/allweixin">戳我参与抽奖！</a>' %nhprice_url
+        self.write(self.wx.response_text_msg(msg))
+
+    def schoolbus(self):
+        bus_json = {
+        "出九龙湖":[
+                    { "time":"7:10-10:00", "bus":"每 10min 一班"},
+                    { "time":"10:00-11:30", "bus":"每 30min 一班"},
+                    { "time":"11:30-13:30", "bus":"每 10min 一班"},
+                    { "time":"13:30-15:00", "bus":"13:30,14:00"},
+                    { "time":"15:00-15:50", "bus":"每 10min 一班"},
+                    { "time":"16:00-17:00", "bus":"16:00"},
+                    { "time":"17:00-18:30", "bus":"每 10min 一班"},
+                    { "time":"18:30-22:00", "bus":"每 30min 一班(20:30没有班车)"}
+                ],
+        "进九龙湖":[
+                    { "time":"7:10-10:00", "bus":"每 10min 一班"},
+                    { "time":"10:00-11:30", "bus":"每 30min 一班"},
+                    { "time":"11:30-13:30", "bus":"每 10min 一班"},
+                    { "time":"13:30-15:00", "bus":"13:30,14:00"},
+                    { "time":"15:00-15:50", "bus":"每 10min 一班"},
+                    { "time":"16:00-17:00", "bus":"16:00"},
+                    { "time":"17:00-18:30", "bus":"每 10min 一班"},
+                    { "time":"18:30-22:00", "bus":"每 30min 一班(20:30没有班车)"}
+                ]
+            }
+
+
     # def change_pwd(self):
     #     try:
     #         teacher = self.db.query(Teacher).filter(Teacher.openid == self.wx.openid).one()
