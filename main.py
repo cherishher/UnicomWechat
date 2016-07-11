@@ -226,7 +226,7 @@ class WechatHandler(tornado.web.RequestHandler):
     def getschoolbus(self):
         client = HTTPClient()
         request = HTTPRequest(
-            url = tuling_url,
+            url = schoolbus_url,
             method = 'GET'
         )
         response = client.fetch(request)
@@ -430,28 +430,8 @@ class WechatHandlera(tornado.web.RequestHandler):
         self.write(self.wx.response_text_msg(msg))
 
     def schoolbus(self):
-        bus_json = {
-        "出九龙湖":[
-                    { "time":"7:10-10:00", "bus":"每 10min 一班"},
-                    { "time":"10:00-11:30", "bus":"每 30min 一班"},
-                    { "time":"11:30-13:30", "bus":"每 10min 一班"},
-                    { "time":"13:30-15:00", "bus":"13:30,14:00"},
-                    { "time":"15:00-15:50", "bus":"每 10min 一班"},
-                    { "time":"16:00-17:00", "bus":"16:00"},
-                    { "time":"17:00-18:30", "bus":"每 10min 一班"},
-                    { "time":"18:30-22:00", "bus":"每 30min 一班(20:30没有班车)"}
-                ],
-        "进九龙湖":[
-                    { "time":"7:10-10:00", "bus":"每 10min 一班"},
-                    { "time":"10:00-11:30", "bus":"每 30min 一班"},
-                    { "time":"11:30-13:30", "bus":"每 10min 一班"},
-                    { "time":"13:30-15:00", "bus":"13:30,14:00"},
-                    { "time":"15:00-15:50", "bus":"每 10min 一班"},
-                    { "time":"16:00-17:00", "bus":"16:00"},
-                    { "time":"17:00-18:30", "bus":"每 10min 一班"},
-                    { "time":"18:30-22:00", "bus":"每 30min 一班(20:30没有班车)"}
-                ]
-            }
+        msg=u'该查询不久后开通'
+        self.write(self.wx.response_text_msg(msg))
 
 
     # def change_pwd(self):
