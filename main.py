@@ -2,28 +2,26 @@
 # -*- coding: utf-8 -*-
 #@date  :2015-3-22
 
-from config import *
+import os
+import sys
+import time
+import json
+import urllib
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.orm.exc import NoResultFound
 from tornado.httpclient import HTTPRequest, AsyncHTTPClient,HTTPClient
-from mod.db.cardnum import Cardnum
-from mod.register.handler import BindHandler
-from mod.db.db import engine
 import tornado.web
 import tornado.ioloop
 import tornado.httpserver
 import tornado.options
 import tornado.gen
-import os, sys
-import check
-import random
-import time
-import json,urllib
-from mod.schoolbus.handler import SchoolBusHandler
-
-
-
 from tornado.options import define, options
+from config import *
+from mod.db.cardnum import Cardnum
+from mod.register.handler import BindHandler
+from mod.db.db import engine
+import check
+
 define('port', default=7000, help='run on the given port', type=int)
 
 class Application(tornado.web.Application):
@@ -32,8 +30,7 @@ class Application(tornado.web.Application):
         handlers = [
             (r'/wechata/',WechatHandler),
             (r'/wechata/register/([\S]+)',BindHandler),
-            (r'/wechatanh/',WechatHandlera),
-            (r'/webchata/schoolbus',SchoolBusHandler)
+            (r'/wechatanh/',WechatHandlera)
             ]
         settings = dict(
             cookie_secret="7CA71A57B571B5AEAC5E64C6042415DE",

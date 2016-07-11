@@ -9,7 +9,7 @@ ResponseContent = u'欢迎关注东大那些年，让我们在未来东大的日
 ResponseContentnh = u'欢迎关注南航那些年，让我们在未来南航的日子里携手前行，不负青春！'
 tuling_url = u'http://127.0.0.1:7005/wechat/tuling'
 class_url =u'http://127.0.0.1:7005/wechat/class'
-schoolbus_url=u'http://127.0.0.1:7005/wechata/schoolbus'
+schoolbus_url=u'http://127.0.0.1:7005/wechat/schoolbus'
 dnrecharge_url = u'http://upay.10010.com/npfwap/npfMobWap/bankcharge/index.html?version=null&desmobile=8E2104B024B5116C9EA24F8EE55A29A8#/bankcharge'
 dnwlan_url=u'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxd5034e2c2200f650&redirect_uri=http%3A%2F%2Fjslt.im-cc.com%2Fjslt%2FgetOpenidController%2FgetOpenid.do%3FimNumber%3Dgh_121faca0ca33%26menuUrl%3Dhttp%3A%2F%2Fjslt.im-cc.com%2Fjslt%2Fband.do%3Fmethod%3DtoBandIndex%5Eflag%3Dwx%5EcomeFrom%3D1%5EurlType%3D1&response_type=code&scope=snsapi_base&state=123'
 dnfreeflow_url=u'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx6f4d200115ef8b8b&redirect_uri=http%3A%2F%2Fjslt.soji.so%2Findex.php%3Fs%3D%2Faddon%2FjsCzHaoLi%2FIndex%2Findex%2Fid%2F206.html&state=1&response_type=code&scope=snsapi_base'
