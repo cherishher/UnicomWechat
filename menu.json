@@ -34,11 +34,6 @@
                "type":"click",
                "name":"调戏",
                "key":"tuling"
-            },
-            {
-               "type":"click",
-               "name":"新生专属免费流量",
-               "key":"freeflow"
             }]
        },
        {
@@ -72,79 +67,71 @@
       "button":[
       {
            "name":"新生报到",
-           "sub_button":[
-            {
-               "type":"click",
-               "name":"校园信息卡申领",
-               "key":"unicomCard"
-            }],
-            "sub_button":[
+           "sub_button":
+            [
             {
                "type":"click",
                "name":"充值",
                "key":"recharge"
-            }],
-                   "sub_button":[
+            },
+            {
+               "type":"click",
+               "name":"校园信息卡申领（研究生）",
+               "key":"unicomCardpost"
+            },
+            {
+               "type":"click",
+               "name":"校园信息卡申领（本科生）",
+               "key":"unicomCard"
+            },
             {
                "type":"click",
                "name":"余量查询",
                "key":"query"
-            }]
+            }
+            ]
        },
        {
            "name":"约吗?",
-           "sub_button":[
-            {
-               "type":"click",
-               "name":"调戏",
-               "key":"tuling"
-            }],
-                   "sub_button":[
-            {
-               "type":"click",
-               "name":"新生专属免费流量",
-               "key":"freeflow"
-            }],
-                   "sub_button":[
+           "sub_button":
+        [
             {
                "type":"click",
                "name":"抽奖活动",
                "key":"price"
-            }]
+            },
+            {
+               "type":"click",
+               "name":"有线无线使用说明",
+               "key":"instruction"
+            },
+            {
+               "type":"click",
+               "name":"调戏",
+               "key":"tuling"
+            },
+            {
+               "type":"click",
+               "name":"新生专属免费流量",
+               "key":"freeflow"
+            }
+        ]
        },
        {
-           "name":"音超联赛",
+           "name":"校园服务",
            "sub_button":[
             {
                "type":"click",
-               "name":"音超报名",
-               "key":"signup"
-            }],
-           "sub_button":[
-            {
-               "type":"click",
-               "name":"音超投票",
-               "key":"vote"
-            }],
-           "sub_button":[
-            {
-               "type":"click",
-               "name":"音超视频上传",
-               "key":"upload"
-            }],
-                   "sub_button":[
-            {
-               "type":"click",
-               "name":"校历",
+               "name":"查查校历",
                "key":"canlender"
-            }],
-                   "sub_button":[
+            },
             {
                "type":"click",
-               "name":"校车时刻表",
+               "name":"校园交通",
                "key":"schoolbus"
-            }]
-       }]
+            }
+            ]
+       }
  }
 
 

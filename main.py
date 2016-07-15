@@ -314,6 +314,7 @@ class WechatHandlera(tornado.web.RequestHandler):
         return {
             'nothing':self.nothing,
             'unicomCard':self.unicomcard,
+            'unicomCardpost':self.unicomcardpost,
             'tuling':self.tuling_message,
             'signup':self.signup,
             'vote':self.vote,
@@ -321,7 +322,9 @@ class WechatHandlera(tornado.web.RequestHandler):
             'recharge':self.recharge,
             'query':self.query,
             'price':self.price,
-            'freeflow':self.freeflow
+            'freeflow':self.freeflow,
+            'instruction':self.instruction,
+            'schoolbus':self.schoolbus
         }
     def on_finish(self):
         self.db.close()
@@ -379,7 +382,10 @@ class WechatHandlera(tornado.web.RequestHandler):
         msg = u' '
         # self.write(self.wx.response_text_msg(msg))
     def unicomcard(self):
-        msg =  u'<a href="%s/allweixin">戳我快速领取通信卡！</a>' %NHCARD_URL
+        msg =  u'<a href="%s/allweixin">戳我快速领取通信卡(本科生)！</a>' %NHCARD_URL
+        self.write(self.wx.response_text_msg(msg))
+    def unicomcardpost(self):
+        msg =  u'<a href="%s/allweixin">戳我快速领取通信卡！(研究生)</a>' %NHCARDPOST_URL
         self.write(self.wx.response_text_msg(msg))
     def tuling_message(self):
         msg = u'直接发送消息可进行调戏呦~'
@@ -441,8 +447,12 @@ class WechatHandlera(tornado.web.RequestHandler):
         msg =  u'<a href="%s/allweixin">戳我参与抽奖！</a>' %nhprice_url
         self.write(self.wx.response_text_msg(msg))
 
+    def instruction(self):
+        msg =  u'<a href="%s/allweixin">戳我查看有线和无线宽带详细使用说明！</a>' %nhstruction_url
+        self.write(self.wx.response_text_msg(msg))
+
     def schoolbus(self):
-        msg=u'该查询不久后开通'
+        msg=u'<a href="%s/allweixin">戳我查看校车！</a>' %nhschoolbus_url
         self.write(self.wx.response_text_msg(msg))
 
 
