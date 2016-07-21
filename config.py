@@ -21,6 +21,8 @@ dncalender_url=u'http://mp.weixin.qq.com/s?__biz=MjM5NDI3NDc2MQ==&mid=400874492&
 nhcalender_url=u'http://ded.nuaa.edu.cn/JwSys/Manager/Module/Calendar/Display/Default.aspx'
 nhstruction_url=u'http://127.0.0.1/static/2.doc'
 nhschoolbus_url=u'http://127.0.0.1/static/1.doc'
+dnjoinus_url=u'http://www.sojump.com/jq/9039702.aspx'
+express_url=u'http://m.kuaidi100.com/'
 
 TERM = '15-16-3'
 

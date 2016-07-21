@@ -2,7 +2,7 @@
 {
       "button":[
       {
-           "name":"礼包",
+           "name":"新生报到",
            "sub_button":[
             {
                "type":"click",
@@ -11,7 +11,7 @@
             },
             {
                "type":"click",
-               "name":"充值",
+               "name":"校园信息卡充值",
                "key":"recharge"
             },
             {
@@ -23,6 +23,11 @@
                "type":"click",
                "name":"WLAN保障",
                "key":"wlan"
+            },
+            {
+               "type":"click",
+               "name":"信息卡申领步骤",
+               "key":"process"
             }
             ]
 
@@ -34,11 +39,33 @@
                "type":"click",
                "name":"调戏",
                "key":"tuling"
-            }]
+            },
+            {
+               "type":"click",
+               "name":"全景东大",
+               "key":"wholeseu"
+            },
+            {
+               "type":"click",
+               "name":"加入我们",
+               "key":"joinus"
+            },
+            {
+               "type":"click",
+               "name":"申领与资费问题答疑",
+               "key":"question"
+            }
+
+]
        },
        {
-           "name":"不约",
+           "name":"校园服务",
            "sub_button":[
+            {
+               "type":"click",
+               "name":"快递查询",
+               "key":"express"
+            },
             {
                "type":"click",
                "name":"课表",

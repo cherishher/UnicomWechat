@@ -15,6 +15,23 @@ class Message(object):
 <Content><![CDATA[{content}]]></Content>
 </xml>
 """
+    PIC_MSG = u"""
+<xml>
+<ToUserName><![CDATA[{to_user_name}]]></ToUserName>
+<FromUserName><![CDATA[{from_user_name}]]></FromUserName>
+<CreateTime>{create_time}</CreateTime>
+<MsgType><![CDATA[news]]></MsgType>
+<ArticleCount>1</ArticleCount>
+<Articles>
+<item>
+<Title><![CDATA[{title}]]></Title>
+<Description><![CDATA[{description}]]></Description>
+<PicUrl><![CDATA[{picurl}]]></PicUrl>
+<Url><![CDATA[{url}]]></Url>
+</item>
+</Articles>
+</xml>
+"""
     def __init__(self, token):
         self.token = token
         self.msg = {}
@@ -71,3 +88,11 @@ class Message(object):
                                     from_user_name=self.msg['ToUserName'],
                                     create_time=str(int(time.time())),
                                     content=content)
+    def response_pic_msg(self, title, pic_url, content, url):
+        return self.PIC_MSG.format(to_user_name=self.msg['FromUserName'],
+                                    from_user_name=self.msg['ToUserName'],
+                                    create_time=str(int(time.time())),
+                                    title=title,
+                                    description=content,
+                                    picurl=pic_url,
+                                    url=url)

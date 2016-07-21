@@ -67,7 +67,12 @@ class WechatHandler(tornado.web.RequestHandler):
             'wlan':self.wlan,
             'freeflow':self.freeflow,
             'calender':self.calender,
-            'schoolbus':self.schoolbus
+            'schoolbus':self.schoolbus,
+            'express':self.express,
+            'joinus':self.joinus,
+            'question':self.waiting,
+            'process':self.waiting,
+            'wholeseu':self.waiting
         }
     def on_finish(self):
         self.db.close()
@@ -204,8 +209,21 @@ class WechatHandler(tornado.web.RequestHandler):
         msg =  u'请关注WO江苏微信公众号获取'
         self.write(self.wx.response_text_msg(msg))
 
+    def waiting(self):
+        msg =  u'此功能即将上线，敬请期待！'
+        self.write(self.wx.response_text_msg(msg))
+
     def wlan(self):
         msg =  u'<a href="%s/allweixin">wlan服务！</a>' %dnwlan_url
+        self.write(self.wx.response_text_msg(msg))
+
+    def joinus(self):
+        msg =  u'<a href="%s/allweixin">戳我申请加入东南wo创社！</a>' % dnjoinus_url
+        self.write(self.wx.response_text_msg(msg))
+
+        self.write(self.wx.response_text_msg(msg))
+    def express(self):
+        msg =  u'<a href="%s/allweixin">戳我查看快递信息！</a>' % express_url
         self.write(self.wx.response_text_msg(msg))
 
     def freeflow(self):
@@ -362,7 +380,11 @@ class WechatHandlera(tornado.web.RequestHandler):
                             print 'key error'
                         self.finish()
                 elif self.wx.msg_type == 'text':
-                    self.tuling()
+                    if self.wx.raw_content.isdigit():
+                       if len(self.wx.raw_content) == 18:
+                           self.idcard()
+                    else:
+                        self.tuling()
                     self.finish()
 
                 else:
@@ -389,6 +411,9 @@ class WechatHandlera(tornado.web.RequestHandler):
         self.write(self.wx.response_text_msg(msg))
     def tuling_message(self):
         msg = u'直接发送消息可进行调戏呦~'
+        self.write(self.wx.response_text_msg(msg))
+    def idcard(self):
+        msg = u'尊敬的同学您好：请您在2016年8月20日后回复18位身份证号获得上网账号。（如有更改将通过图文及时告知）'
         self.write(self.wx.response_text_msg(msg))
 
     def tuling(self):
