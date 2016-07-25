@@ -23,6 +23,11 @@ nhstruction_url=u'http://127.0.0.1/static/2.doc'
 nhschoolbus_url=u'http://127.0.0.1/static/1.doc'
 dnjoinus_url=u'http://www.sojump.com/jq/9039702.aspx'
 express_url=u'http://m.kuaidi100.com/'
+dnquestion_url=u'http://mp.weixin.qq.com/s?__biz=MzIxNzIwOTc0NA==&mid=2652663489&idx=1&sn=4935ce785a5ea72da2714bfda32a3021&scene=0#wechat_redirect'
+dnquestion_pic_url=u'http://mmbiz.qpic.cn/mmbiz/Wibxic4SbKUIR5DLdQYibwXNp7QISpsPdiaicjOkCibgEmxDeS1iagZKyQs013JGCvMfS9SDqLO5hz6ZGiarOBM3h8h2nA/0?wx_fmt=png'
+dnprocess_pic_url=u'http://mmbiz.qpic.cn/mmbiz/Wibxic4SbKUIS7jDrojJnofbcJJLtGlvkcYKE4k2QCaMicZlG5DOiaEcxE5MN1v1Kk8mfXMvJo2ics3gLtuomFtBk7A/0?wx_fmt=png'
+dnprocess_url=u'http://mp.weixin.qq.com/s?__biz=MzIxNzIwOTc0NA==&mid=2652663467&idx=1&sn=1c5a118c637f40995744a165aac69df9#rd'
+
 
 TERM = '15-16-3'
 

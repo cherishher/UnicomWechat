@@ -6,18 +6,13 @@
            "sub_button":[
             {
                "type":"click",
-               "name":"领卡",
+               "name":"校园信息卡申领",
                "key":"unicomCard"
             },
             {
                "type":"click",
                "name":"校园信息卡充值",
                "key":"recharge"
-            },
-            {
-               "type":"click",
-               "name":"余量查询",
-               "key":"query"
             },
             {
                "type":"click",

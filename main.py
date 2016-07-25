@@ -70,8 +70,8 @@ class WechatHandler(tornado.web.RequestHandler):
             'schoolbus':self.schoolbus,
             'express':self.express,
             'joinus':self.joinus,
-            'question':self.waiting,
-            'process':self.waiting,
+            'question':self.question,
+            'process':self.process,
             'wholeseu':self.waiting
         }
     def on_finish(self):
@@ -221,7 +221,12 @@ class WechatHandler(tornado.web.RequestHandler):
         msg =  u'<a href="%s/allweixin">戳我申请加入东南wo创社！</a>' % dnjoinus_url
         self.write(self.wx.response_text_msg(msg))
 
-        self.write(self.wx.response_text_msg(msg))
+    def question(self):
+        self.write(self.wx.response_pic_msg(u"申领与资费问题答疑",dnquestion_pic_url,u'点击查看详细',dnquestion_url))
+
+    def process(self):
+        self.write(self.wx.response_pic_msg(u"信息卡申领步骤",dnprocess_pic_url,u'点击查看详细',dnprocess_url))
+
     def express(self):
         msg =  u'<a href="%s/allweixin">戳我查看快递信息！</a>' % express_url
         self.write(self.wx.response_text_msg(msg))

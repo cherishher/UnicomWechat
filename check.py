@@ -88,6 +88,7 @@ class Message(object):
                                     from_user_name=self.msg['ToUserName'],
                                     create_time=str(int(time.time())),
                                     content=content)
+
     def response_pic_msg(self, title, pic_url, content, url):
         return self.PIC_MSG.format(to_user_name=self.msg['FromUserName'],
                                     from_user_name=self.msg['ToUserName'],
