@@ -72,7 +72,8 @@ class WechatHandler(tornado.web.RequestHandler):
             'joinus':self.joinus,
             'question':self.question,
             'process':self.process,
-            'wholeseu':self.waiting
+            'wholeseu':self.waiting,
+            'detail':self.detail
         }
     def on_finish(self):
         self.db.close()
@@ -227,6 +228,9 @@ class WechatHandler(tornado.web.RequestHandler):
     def process(self):
         self.write(self.wx.response_pic_msg(u"信息卡申领步骤",dnprocess_pic_url,u'点击查看详细',dnprocess_url))
 
+    def detail(self):
+        self.write(self.wx.response_pic_msg(u"信息卡资费详解",dndetail_pic_url,u'点击查看详细',dndetail_url))
+
     def express(self):
         msg =  u'<a href="%s/allweixin">戳我查看快递信息！</a>' % express_url
         self.write(self.wx.response_text_msg(msg))
@@ -347,7 +351,12 @@ class WechatHandlera(tornado.web.RequestHandler):
             'price':self.price,
             'freeflow':self.freeflow,
             'instruction':self.instruction,
-            'schoolbus':self.schoolbus
+            'schoolbus':self.schoolbus,
+            'cardteach':self.cardteach,
+            'settingteach':self.settingteach,
+            'express':self.express,
+            'joinus':self.joinus,
+            'cardinstruction':self.cardinstruction
         }
     def on_finish(self):
         self.db.close()
@@ -420,6 +429,23 @@ class WechatHandlera(tornado.web.RequestHandler):
     def idcard(self):
         msg = u'尊敬的同学您好：请您在2016年8月20日后回复18位身份证号获得上网账号。（如有更改将通过图文及时告知）'
         self.write(self.wx.response_text_msg(msg))
+
+    def cardteach(self):
+        self.write(self.wx.response_pic_msg(u"校园手机卡申领教程",nhcardteach_pic_url,u'点击查看详细',nhcardteach_url))
+
+    def settingteach(self):
+        self.write(self.wx.response_pic_msg(u"有线和无线的设置教程",nhsettingteach_pic_url,u'点击查看详细',nhsettingteach_url))
+
+    def express(self):
+        msg =  u'<a href="%s/allweixin">戳我查看快递信息！</a>' % express_url
+        self.write(self.wx.response_text_msg(msg))
+
+    def joinus(self):
+        msg =  u'<a href="%s/allweixin">加入我们戳这里！</a>' % nhjoinus_url
+        self.write(self.wx.response_text_msg(msg))
+
+    def cardinstruction(self):
+        self.write(self.wx.response_pic_msg(u"南航校园信息卡说明",nhcardinstruction_pic_url,u'点击查看详细',nhcardinstruction_url))
 
     def tuling(self):
         try:

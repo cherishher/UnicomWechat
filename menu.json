@@ -75,6 +75,11 @@
                "type":"click",
                "name":"校车时刻表",
                "key":"schoolbus"
+            },
+            {
+               "type":"click",
+               "name":"信息卡资费详解",
+               "key":"detail"
             }]
        }]
  }
@@ -98,6 +103,11 @@
             },
             {
                "type":"click",
+               "name":"校园手机卡申领教程",
+               "key":"cardteach"
+            },
+            {
+               "type":"click",
                "name":"校园信息卡申领（研究生）",
                "key":"unicomCardpost"
             },
@@ -114,13 +124,18 @@
             ]
        },
        {
-           "name":"约吗?",
+           "name":"宽带服务",
            "sub_button":
         [
             {
                "type":"click",
                "name":"抽奖活动",
                "key":"price"
+            },
+            {
+               "type":"click",
+               "name":"有线和无线的设置教程",
+               "key":"settingteach"
             },
             {
                "type":"click",
@@ -151,6 +166,21 @@
                "type":"click",
                "name":"校园交通",
                "key":"schoolbus"
+            },
+            {
+               "type":"click",
+               "name":"快递查询",
+               "key":"express"
+            },
+                    {
+               "type":"click",
+               "name":"加入我们",
+               "key":"joinus"
+            },
+                    {
+               "type":"click",
+               "name":"南航校园信息卡说明",
+               "key":"cardinstruction"
             }
             ]
        }
