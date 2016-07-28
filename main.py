@@ -356,6 +356,7 @@ class WechatHandlera(tornado.web.RequestHandler):
             'settingteach':self.settingteach,
             'express':self.express,
             'joinus':self.joinus,
+            'canlender':self.canlender,
             'cardinstruction':self.cardinstruction
         }
     def on_finish(self):
@@ -423,6 +424,11 @@ class WechatHandlera(tornado.web.RequestHandler):
     def unicomcardpost(self):
         msg =  u'<a href="%s/allweixin">戳我快速领取通信卡！(研究生)</a>' %NHCARDPOST_URL
         self.write(self.wx.response_text_msg(msg))
+
+    def canlender(self):
+        msg =  u'<a href="%s/allweixin">戳我查看校历！</a>' %nhcalender_url
+        self.write(self.wx.response_text_msg(msg))
+
     def tuling_message(self):
         msg = u'直接发送消息可进行调戏呦~'
         self.write(self.wx.response_text_msg(msg))

@@ -40,6 +40,7 @@ nhcardinstruction_url=u'http://mp.weixin.qq.com/s?__biz=MzIwOTIxMTc0Ng==&mid=224
 nhcardinstruction_pic_url=u'http://mmbiz.qpic.cn/mmbiz/Tt5NmW9xzyiaHg3GuzrVDBrhsciaoYZKaadpUoovtK1crCxaZNYal4SdBbKVLn0FXxu3oJ0OymROqIcdeNicgEDDQ/0?wx_fmt=jpeg'
 nhquery_url=u'http://upay.10010.com/npfwap/npfMobWap/bankcharge/index.html?version=null&desmobile=8E2104B024B5116C9EA24F8EE55A29A8#/bankcharge'
 
+
 TERM = '15-16-3'
 
 
