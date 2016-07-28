@@ -492,7 +492,7 @@ class WechatHandlera(tornado.web.RequestHandler):
         self.write(self.wx.response_text_msg(msg))
 
     def query(self):
-        msg =  u'请关注wo江苏微信公众号后查询'
+        msg =  u'<a href="%s/allweixin">余量查询！</a>' % nhquery_url
         self.write(self.wx.response_text_msg(msg))
 
     def freeflow(self):

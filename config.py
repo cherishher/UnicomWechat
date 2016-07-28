@@ -38,7 +38,7 @@ nhcardteach_pic_url=u'http://mmbiz.qpic.cn/mmbiz/Tt5NmW9xzygjlLhicVn9GDJsPvsZff6
 nhjoinus_url=u'http://www.sojump.hk/jq/9132203.aspx'
 nhcardinstruction_url=u'http://mp.weixin.qq.com/s?__biz=MzIwOTIxMTc0Ng==&mid=2247483835&idx=1&sn=40addc8b3e617f0e39846d8af12e20b3&scene=0#wechat_redirect'
 nhcardinstruction_pic_url=u'http://mmbiz.qpic.cn/mmbiz/Tt5NmW9xzyiaHg3GuzrVDBrhsciaoYZKaadpUoovtK1crCxaZNYal4SdBbKVLn0FXxu3oJ0OymROqIcdeNicgEDDQ/0?wx_fmt=jpeg'
-
+nhquery_url=u'http://upay.10010.com/npfwap/npfMobWap/bankcharge/index.html?version=null&desmobile=8E2104B024B5116C9EA24F8EE55A29A8#/bankcharge'
 
 TERM = '15-16-3'
 
