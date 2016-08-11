@@ -438,22 +438,21 @@ class WechatHandlera(tornado.web.RequestHandler):
         self.write(self.wx.response_text_msg(msg))
 
     def getnetworkid(self,userid):
-        try:
-            client = HTTPClient()
-            data = {
-                'cardnum':userid
-            }
-            request = HTTPRequest(
-                url = networkid_url,
-                method = 'POST',
-                body = urllib.urlencode(data)
-            )
-            response = client.fetch(request)
-            content = json.loads(response.body)
-            if content['code'] == 200:
-                message = content['retid']
-            else:
-                message = u'暂时查询不到你的信息请稍后再试试吧'
+        client = HTTPClient()
+        data = {
+            'cardnum':userid
+        }
+        request = HTTPRequest(
+            url = networkid_url,
+            method = 'POST',
+            body = urllib.urlencode(data)
+        )
+        response = client.fetch(request)
+        content = json.loads(response.body)
+        if content['code'] == 200:
+            message = content['retid']
+        else:
+            message = u'暂时查询不到你的信息请稍后再试试吧'
         return message
 
     def networkid(self):
