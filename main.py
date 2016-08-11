@@ -357,7 +357,8 @@ class WechatHandlera(tornado.web.RequestHandler):
             'express':self.express,
             'joinus':self.joinus,
             'canlender':self.canlender,
-            'cardinstruction':self.cardinstruction
+            'cardinstruction':self.cardinstruction,
+            'networkid':self.networkid
         }
     def on_finish(self):
         self.db.close()
@@ -397,7 +398,7 @@ class WechatHandlera(tornado.web.RequestHandler):
                 elif self.wx.msg_type == 'text':
                     if self.wx.raw_content.isdigit():
                        if len(self.wx.raw_content) == 18:
-                           self.idcard()
+                           self.networkid()
                     else:
                         self.tuling()
                     self.finish()
@@ -435,6 +436,34 @@ class WechatHandlera(tornado.web.RequestHandler):
     def idcard(self):
         msg = u'尊敬的同学您好：请您在2016年8月20日后回复18位身份证号获得上网账号。（如有更改将通过图文及时告知）'
         self.write(self.wx.response_text_msg(msg))
+
+    def getnetworkid(self,userid):
+        try:
+            client = HTTPClient()
+            data = {
+                'cardnum':userid
+            }
+            request = HTTPRequest(
+                url = networkid_url,
+                method = 'POST',
+                body = urllib.urlencode(data)
+            )
+            response = client.fetch(request)
+            content = json.loads(response.body)
+            if content['code'] == 200:
+                message = content['retid']
+            else:
+                message = u'暂时查询不到你的信息请稍后再试试吧'
+        return message
+
+    def networkid(self):
+        try:
+            msg = u''
+            msg = self.getnetworkid(self.wx.raw_content)
+            self.write(self.wx.response_text_msg(msg))
+        except Exception,e:
+            msg = u'似乎出现了什么奇怪的事情呢~等等再来试试吧！'
+            self.write(self.wx.response_text_msg(msg))
 
     def cardteach(self):
         self.write(self.wx.response_pic_msg(u"校园手机卡申领教程",nhcardteach_pic_url,u'点击查看详细',nhcardteach_url))

@@ -98,12 +98,7 @@
             [
             {
                "type":"click",
-               "name":"充值",
-               "key":"recharge"
-            },
-            {
-               "type":"click",
-               "name":"校园手机卡申领教程",
+               "name":"校园信息卡申领教程",
                "key":"cardteach"
             },
             {
@@ -118,8 +113,8 @@
             },
             {
                "type":"click",
-               "name":"余量查询",
-               "key":"query"
+               "name":"校园信息卡充值",
+               "key":"recharge"
             }
             ]
        },
@@ -127,11 +122,6 @@
            "name":"宽带服务",
            "sub_button":
         [
-            {
-               "type":"click",
-               "name":"抽奖活动",
-               "key":"price"
-            },
             {
                "type":"click",
                "name":"有线和无线的设置教程",
@@ -146,11 +136,6 @@
                "type":"click",
                "name":"调戏",
                "key":"tuling"
-            },
-            {
-               "type":"click",
-               "name":"新生专属免费流量",
-               "key":"freeflow"
             }
         ]
        },
