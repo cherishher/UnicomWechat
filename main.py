@@ -447,8 +447,8 @@ class WechatHandlera(tornado.web.RequestHandler):
             if content['code'] == 200:
                 wiredid = content['wiredid']
                 wirelessid = content['wirelessid']
-                msg = '尊敬的用户您好，您的宽带上网账号为'+wiredid+' 密码为123123或身'+\
-                      '份证后六位，您的无线上网账号为'+wirelessid+' 密码为123123或身份证后六位。本消息只回复两次！'
+                msg = u'尊敬的用户您好，您的宽带上网账号为'+wiredid+u' 密码为123123或身'+\
+                      u'份证后六位，您的无线上网账号为'+wirelessid+u' 密码为123123或身份证后六位。本消息只回复两次！'
             else:
                 msg = u"找不到您的信息~"
         except Exception,e:
