@@ -437,35 +437,29 @@ class WechatHandlera(tornado.web.RequestHandler):
         msg = u'尊敬的同学您好：请您在2016年8月20日后回复18位身份证号获得上网账号。（如有更改将通过图文及时告知）'
         self.write(self.wx.response_text_msg(msg))
 
-    def getnetworkid(self,userid):
-        client = HTTPClient()
-        data = {
-            'cardnum':userid
-        }
-        request = HTTPRequest(
-            url = networkid_url,
-            method = 'POST',
-            body = urllib.urlencode(data)
-        )
-        response = client.fetch(request)
-        content = json.loads(response.body)
-        if content['code'] == 200:
-            message = content['content']
-        else:
-            message = u'暂时查询不到你的信息请稍后再试试吧'
-        return message
-
     def networkid(self):
         try:
-            content = self.getnetworkid(self.wx.raw_content)
-            wiredid = content['wiredid']
-            wirelessid = content['wirelessid']
-            msg = '尊敬的用户您好，您的宽带上网账号为'+wiredid+' 密码为123123或身'+\
-                  '份证后六位，您的无线上网账号为'+wirelessid+' 密码为123123或身份证后六位。本消息只回复两次！'
-            self.write(self.wx.response_text_msg(msg))
+            client = HTTPClient()
+            data = {
+                'cardnum':self.wx.raw_content
+            }
+            request = HTTPRequest(
+                url = networkid_url,
+                method = 'POST',
+                body = urllib.urlencode(data)
+            )
+            response = client.fetch(request)
+            content = json.loads(response.body)
+            if content['code'] == 200:
+                wiredid = content['wiredid']
+                wirelessid = content['wirelessid']
+                msg = '尊敬的用户您好，您的宽带上网账号为'+wiredid+' 密码为123123或身'+\
+                      '份证后六位，您的无线上网账号为'+wirelessid+' 密码为123123或身份证后六位。本消息只回复两次！'
+            else:
+                msg = u"找不到您的信息~"
         except Exception,e:
             msg = u'似乎出现了什么奇怪的事情呢~等等再来试试吧！'
-            self.write(self.wx.response_text_msg(msg))
+        self.write(self.wx.response_text_msg(msg))
 
     def cardteach(self):
         self.write(self.wx.response_pic_msg(u"校园手机卡申领教程",nhcardteach_pic_url,u'点击查看详细',nhcardteach_url))
