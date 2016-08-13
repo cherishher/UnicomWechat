@@ -24,8 +24,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5678161">
-              <caret line="453" column="44" selection-start-line="453" selection-start-column="44" selection-end-line="453" selection-end-column="44" />
+            <state vertical-scroll-proportion="0.7816092">
+              <caret line="453" column="14" selection-start-line="453" selection-start-column="14" selection-end-line="453" selection-end-column="14" />
               <folding>
                 <element signature="e#62#71#0" expanded="true" />
               </folding>
@@ -249,7 +249,7 @@
       <recent name="G:\ThingsOfMax\project\UnicomWechat\templates" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.test">
+  <component name="RunManager" selected="Python.main">
     <configuration default="false" name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -430,8 +430,8 @@
     </list>
     <recent_temporary>
       <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Python.test" />
-        <item index="1" class="java.lang.String" itemvalue="Python.main" />
+        <item index="0" class="java.lang.String" itemvalue="Python.main" />
+        <item index="1" class="java.lang.String" itemvalue="Python.test" />
         <item index="2" class="java.lang.String" itemvalue="Python.cardnum" />
       </list>
     </recent_temporary>
@@ -450,7 +450,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1370" height="735" extended-state="1" />
+    <frame x="-7" y="0" width="1370" height="735" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14106351" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -900,8 +900,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5678161">
-          <caret line="453" column="44" selection-start-line="453" selection-start-column="44" selection-end-line="453" selection-end-column="44" />
+        <state vertical-scroll-proportion="0.7816092">
+          <caret line="453" column="14" selection-start-line="453" selection-start-column="14" selection-end-line="453" selection-end-column="14" />
           <folding>
             <element signature="e#62#71#0" expanded="true" />
           </folding>

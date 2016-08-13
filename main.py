@@ -113,13 +113,10 @@ class WechatHandler(tornado.web.RequestHandler):
                 elif self.wx.msg_type == 'text':
                     self.tuling()
                     self.finish()
-
                 else:
                     self.write(self.wx.response_text_msg(u'??'))
                     self.finish()
             except:
-                with open('wechat_error.log','a+') as f:
-                    f.write(time.strftime('%Y%m%d %H:%M:%S in [wechat]', time.localtime(time()))+'\n'+str(sys.exc_info()[0])+str(sys.exc_info()[1])+'\n\n')
                 self.write(self.wx.response_text_msg(u'出了点问题T_T,稍后再试吧~'))
                 self.finish()
         else:
@@ -396,9 +393,8 @@ class WechatHandlera(tornado.web.RequestHandler):
                             print 'key error'
                         self.finish()
                 elif self.wx.msg_type == 'text':
-                    if self.wx.raw_content.isdigit():
-                       if len(self.wx.raw_content) == 18:
-                           self.networkid()
+                    if len(self.wx.raw_content) == 18:
+                        self.networkid()
                     else:
                         self.tuling()
                     self.finish()
@@ -407,8 +403,6 @@ class WechatHandlera(tornado.web.RequestHandler):
                     self.write(self.wx.response_text_msg(u'??'))
                     self.finish()
             except:
-                with open('wechat_error.log','a+') as f:
-                    f.write(time.strftime('%Y%m%d %H:%M:%S in [wechat]', time.localtime(time()))+'\n'+str(sys.exc_info()[0])+str(sys.exc_info()[1])+'\n\n')
                 self.write(self.wx.response_text_msg(u'出了点问题T_T,稍后再试吧~'))
                 self.finish()
         else:
