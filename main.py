@@ -450,15 +450,18 @@ class WechatHandlera(tornado.web.RequestHandler):
         response = client.fetch(request)
         content = json.loads(response.body)
         if content['code'] == 200:
-            message = content['retid']
+            message = content['content']
         else:
             message = u'暂时查询不到你的信息请稍后再试试吧'
         return message
 
     def networkid(self):
         try:
-            msg = u''
-            msg = self.getnetworkid(self.wx.raw_content)
+            content = self.getnetworkid(self.wx.raw_content)
+            wiredid = content['wiredid']
+            wirelessid = content['wirelessid']
+            msg = '尊敬的用户您好，您的宽带上网账号为'+wiredid+' 密码为123123或身'+\
+                  '份证后六位，您的无线上网账号为'+wirelessid+' 密码为123123或身份证后六位。本消息只回复两次！'
             self.write(self.wx.response_text_msg(msg))
         except Exception,e:
             msg = u'似乎出现了什么奇怪的事情呢~等等再来试试吧！'
