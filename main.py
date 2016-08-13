@@ -450,7 +450,7 @@ class WechatHandlera(tornado.web.RequestHandler):
                 msg = u'尊敬的用户您好，您的宽带上网账号为'+wiredid+u' 密码为123123或身'+\
                       u'份证后六位，您的无线上网账号为'+wirelessid+u' 密码为123123或身份证后六位。本消息只回复两次！'
             else:
-                msg = u"找不到您的信息~"
+                msg = u"找不到您的信息或回复机会已经用完，其他原因没有回复请联系我们~"
         except Exception,e:
             msg = u'似乎出现了什么奇怪的事情呢~等等再来试试吧！'
         self.write(self.wx.response_text_msg(msg))
