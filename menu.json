@@ -23,6 +23,11 @@
                "type":"click",
                "name":"信息卡申领步骤",
                "key":"process"
+            },
+                    {
+               "type":"click",
+               "name":"信息卡资费详解",
+               "key":"detail"
             }
             ]
 
@@ -76,10 +81,10 @@
                "name":"校车时刻表",
                "key":"schoolbus"
             },
-            {
-               "type":"click",
-               "name":"信息卡资费详解",
-               "key":"detail"
+                        {
+               "type":"view",
+               "name":"海锚插座",
+               "url":"http://url.cn/2CuaRht"
             }]
        }]
  }
@@ -115,6 +120,11 @@
                "type":"click",
                "name":"校园信息卡充值",
                "key":"recharge"
+            },
+                                        {
+               "type":"click",
+               "name":"南航校园信息卡说明",
+               "key":"cardinstruction"
             }
             ]
        },
@@ -162,14 +172,12 @@
                "name":"加入我们",
                "key":"joinus"
             },
-                    {
-               "type":"click",
-               "name":"南航校园信息卡说明",
-               "key":"cardinstruction"
-            }
-            ]
-       }
-]
+            {
+               "type":"view",
+               "name":"海锚插座",
+               "url":"http://url.cn/2CuaRht"
+            }]
+       }]
  }
 
 
