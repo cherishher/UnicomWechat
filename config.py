@@ -30,7 +30,7 @@ dnprocess_pic_url=u'http://mmbiz.qpic.cn/mmbiz/Wibxic4SbKUIS7jDrojJnofbcJJLtGlvk
 dnprocess_url=u'http://mp.weixin.qq.com/s?__biz=MzIxNzIwOTc0NA==&mid=2652663467&idx=1&sn=1c5a118c637f40995744a165aac69df9#rd'
 dndetail_url=u'http://mp.weixin.qq.com/s?__biz=MzIxNzIwOTc0NA==&mid=2652663657&idx=2&sn=b040f941e16acd30ed59a8730e3e20ad&scene=1&srcid=0815KODVuOywZNO5GHHvsXmT#wechat_redirect'
 dndetail_pic_url=u'http://mmbiz.qpic.cn/mmbiz_jpg/Wibxic4SbKUIQicsjfJ8SibK0AjZLyaHFMlr6clzicVwQtLILbIZWkLbSzLv2lynW1mPibPxOCrUH5rg1unqCdIhnBdA/0?wx_fmt=jpeg'
-nhinstruction_url=u'http://mp.weixin.qq.com/s?__biz=MzIwOTIxMTc0Ng==&mid=2247483831&idx=1&sn=879a52eb106f7219fd0c436d430e0bd4&scene=1&srcid=0720K4RYyAjXTb0D0GT5HDH1#wechat_redirect'
+nhinstruction_url=u'http://mp.weixin.qq.com/s?__biz=MzIwOTIxMTc0Ng==&mid=2247483898&idx=1&sn=a23b52ada0985130288b93cb86ee2ed2&scene=0#wechat_redirect'
 nhinstruction_pic_url=u'http://mmbiz.qpic.cn/mmbiz/Tt5NmW9xzyiaHg3GuzrVDBrhsciaoYZKaabnguf9uK4ylER3QLUgfK6D9GqC5nDmMNqjQ5o8Q6apYBaMUFG0AHQg/0?wx_fmt=jpeg'
 nhsettingteach_url=u'http://mp.weixin.qq.com/s?__biz=MzIwOTIxMTc0Ng==&mid=2247483839&idx=1&sn=4a978fb1350521bf0c680313b7da6c9f&scene=1&srcid=0727DGufT4O7KXebTpRAvCLE#wechat_redirect'
 nhsettingteach_pic_url=u'http://mmbiz.qpic.cn/mmbiz/Tt5NmW9xzyiaWLyVKzCcdEQToKejicrIiabKEH9OGicWIzqEYwF9jcoXJ6lTpkQemOSx7mt5qeO5JboQWOZcJclr0g/0?wx_fmt=jpeg'

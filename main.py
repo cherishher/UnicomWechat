@@ -529,8 +529,7 @@ class WechatHandlera(tornado.web.RequestHandler):
         self.write(self.wx.response_text_msg(msg))
 
     def instruction(self):
-        msg =  u'<a href="%s/allweixin">戳我查看有线和无线宽带详细使用说明！</a>' %nhstruction_url
-        self.write(self.wx.response_text_msg(msg))
+        self.write(self.wx.response_pic_msg(u"有线和无线使用说明",nhcardinstruction_pic_url,u'点击查看详细',nhcardinstruction_url))
 
     def schoolbus(self):
         msg=u'<a href="%s/allweixin">戳我查看校车！</a>' %nhschoolbus_url
